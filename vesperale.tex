@@ -1,0 +1,334 @@
+\documentclass[17pt,twoside]{extreport} %%% add 17pt
+\usepackage{moresize}
+\usepackage{fontspec}
+\usepackage{aeguill}
+\usepackage{titlesec}
+\usepackage[maxlevel=3]{csquotes}
+\usepackage{lettrine}
+\usepackage{xifthen}
+\usepackage{yfonts}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{hanging}
+\usepackage[autocompile,allowdeprecated=false]{gregoriotex}
+\usepackage[twoside]{geometry}
+\usepackage{multicol}
+
+\setlength{\columnseprule}{0.1pt}
+\setlength{\columnsep}{1.5em}
+
+\gredefsizedsymbol{GreCross}{greextra}{Cross}
+\gredefsizedsymbol{GreStarHeight}{greextra}{StarHeight}
+\gredefsizedsymbol{greABar}{greextra}{ABar}
+\gredefsizedsymbol{greVBar}{greextra}{VBar}
+\gredefsizedsymbol{greRBar}{greextra}{RBar}
+
+\gresetspecial{R/}{\textcolor{red}{\Rbar{}}}
+\gresetspecial{V/}{\textcolor{red}{\Vbar{}}}
+\gresetspecial{+}{\textcolor{red}{\GreCross{17}}}
+\gresetspecial{*}{\textcolor{red}{\GreStarHeight{17}}}
+
+\grechangestaffsize{30}
+\grechangedim{abovelinestextheight}{0.25cm}{fixed}
+\grechangedim{spacebeneathtext}{0.5cm}{fixed}
+
+%%% FORMATTING %%%
+\newcommand{\greformat}[1]{\textcolor{red}{\textbf{#1}}}
+\newcommand{\skiplines}[1]{\vspace*{#1\baselineskip}}
+\newcommand{\scoreskip}[0]{\skiplines{0}}
+\newcommand{\instruct}[1]{\textcolor{red}{\textit{#1}}}
+\newcommand{\greant}[1]{\greannotation{#1. \color{red}\textbf{Ant.}}}
+\newcommand{\breakhere}[0]{}
+
+\let\grescore\gregorioscore
+\renewcommand{\gregorioscore}[1]{\scoreskip\grescore{#1}}
+
+\let\gresnip\gabcsnippet
+\renewcommand{\gabcsnippet}[1]{\gresnip{#1}}
+
+%%% DIVISIONS %%%
+\makeatletter
+\newcommand{\vepart}[1]{%
+	\clearpage%
+	\centerline{\LARGE \selectfont \textbf{#1}}%
+	\skiplines{0.5}
+}%
+\makeatother
+
+\makeatletter
+\newcommand{\vechapter}[1]{%
+	\centerline{\large \selectfont #1}%
+	\skiplines{0.5}
+}%
+\makeatother
+
+\makeatletter
+\newcommand{\vesection}[1]{%
+	\skiplines{0.5}%
+	\centerline{\selectfont \textbf{#1}}%
+	%\nopagebreak[4]%
+}%
+\makeatother
+
+\makeatletter
+\newcommand{\veheading}[1]{%
+	\skiplines{0.5}%
+	\centerline{\selectfont \textit{#1}}%
+	%\nopagebreak[4]%
+}%
+\makeatother
+
+%%% HELPERS %%%
+\makeatletter
+\newcommand{\gloria}[0]{%
+	Glória Patri, et Fílio, * et Spirítui Sancto.
+	
+	Sicut erat in princípio, et nunc, et semper, * et in s\'{æ}cula sæculórum. Amen.
+}%
+\makeatother
+
+\begin{document}
+	\raggedbottom
+	\newgeometry{margin=0pt}
+	\begin{titlepage}
+		\vspace*{\fill}
+		\centerline{\Huge\selectfont VESPERALE}
+		
+		\vspace*{0.5\baselineskip}
+		
+		\centerline{\large\selectfont OF THE}
+		
+		\vspace*{0.5\baselineskip}
+		
+		\centerline{\Large\selectfont HOLY ROMAN CHURCH}
+		
+		\vspace*{\fill}
+		
+		\centerline{\LARGE\selectfont VESPERS AND COMPLINE}
+		
+		\vspace*{1\baselineskip}
+		
+		\centerline{\large\selectfont ACCORDING TO THE USE OF SARUM}
+		
+		
+		\vspace*{\fill}
+		
+		\centerline{\normalsize\selectfont ARRANGED FOR USE OF THE KENT STATE UNIVERSITY PARISH}
+		
+		\vspace*{\baselineskip}
+		
+		\centerline{\normalsize\selectfont MMXXIII}
+		
+		\vspace*{\fill}
+	\end{titlepage}
+
+	\newgeometry{top=0.25in,bottom=0.25in,inner=0.25in,outer=0.5in,includefoot}
+	
+	\pagenumbering{arabic}
+	\gresetinitiallines{0}
+	
+	\vepart{Ordo for Vespers}
+	\input{vespers_ordo}
+	
+	\vepart{Ordo for Compline}
+	\input{compline_ordo}
+	
+	\vepart{Psalter}
+	\vechapter{Sunday at Second Vespers}
+	\input{sunday/ii/sunday_ii}
+	
+	\clearpage
+	\vechapter{Monday at Vespers}
+	\input{monday/monday}
+	
+	\clearpage
+	\vechapter{Tuesday at Vespers}
+	\input{tuesday/tuesday}
+	
+	\clearpage
+	\vechapter{Wednesday at Vespers}
+	\input{wednesday/wednesday}
+	
+	\clearpage
+	\vechapter{Thursday at Vespers}
+	\input{thursday/thursday}
+	
+	\clearpage
+	\vechapter{Friday at Vespers}
+	\input{friday/friday}
+	
+	\clearpage
+	\vechapter{Sunday at First Vespers}
+	\input{sunday/i/sunday_i}
+	
+	\clearpage
+	\vechapter{At Compline}
+	\input{compline}
+	
+	\clearpage
+	\vepart{Commons of the Seasons}
+	\vechapter{Advent I}
+	\vesection{At Vespers}
+	\input{commons/advent/1/vespers}
+	
+	\clearpage
+	\vesection{At Compline}
+	\input{commons/advent/1/compline}
+	
+	\clearpage
+	\vechapter{Advent II}
+	\vesection{At Vespers}
+	\input{commons/advent/2/vespers}
+	
+	\clearpage
+	\vesection{At Compline}
+	\input{commons/advent/2/compline}
+	
+	\clearpage
+	\vechapter{Christmastide}
+	\vesection{At Vespers}
+	\input{commons/christmas/vespers}
+	
+	\clearpage
+	\input{commons/christmas/compline}
+	
+	\clearpage
+	\vechapter{Ordinary Time}
+	\vesection{Sunday at Second Vespers}
+	\input{commons/ot/sunday_i}
+	
+	\clearpage
+	\vesection{Monday at Vespers}
+	\input{commons/ot/monday}
+	
+	\clearpage
+	\vesection{Tuesday at Vespers}
+	\input{commons/ot/tuesday}
+	
+	\clearpage
+	\vesection{Wednesday at Vespers}
+	\input{commons/ot/wednesday}
+	
+	\clearpage
+	\vesection{Thursday at Vespers}
+	\input{commons/ot/thursday}
+	
+	\clearpage
+	\vesection{Friday at Vespers}
+	\input{commons/ot/friday}
+	
+	\clearpage
+	\vesection{Sunday at First Vespers}
+	\input{commons/ot/saturday}
+	
+	\clearpage
+	\vesection{At Compline}
+	\input{commons/ot/compline}
+	
+	\clearpage
+	\vechapter{Lent I}
+	\instruct{These commons begin on the first Sunday of Lent until the third Sunday. Afterwards, everything is from the propers for each week.}
+	
+	\vesection{At Vespers}
+	\input{commons/lent/vespers}
+	
+	\clearpage
+	\vesection{At Compline}
+	\input{commons/lent/compline}
+	
+	\clearpage
+	\vechapter{Easter}
+	\instruct{These commons are sung from the Second Sunday of Easter until the Ascension.}
+	
+	\vesection{Sunday at First Vespers}
+	\input{commons/easter/first_vespers}
+	
+	\clearpage
+	\vesection{Sunday at Second Vespers and Feria at Vespers}
+	\input{commons/easter/vespers}
+	
+	\clearpage
+	\vesection{At Compline}
+	\input{commons/easter/compline}
+	
+	\clearpage
+	\vepart{Propers of the Seasons} 
+	\input{propers/seasons}
+	
+	\clearpage
+	\vepart{Propers of Time} % Sundays of august, september, october, november
+	\vechapter{Greater Advent}
+	\input{propers/advent/o_antiphons}
+	
+	\clearpage
+	\vepart{Commons of the Saints}
+	
+	\clearpage
+	\vepart{Propers of the Saints}
+	
+	\clearpage
+	\gresetinitiallines{0}
+	\vepart{Anthems of the Blessed Virgin Mary}
+	\vechapter{Alma Redemptoris Mater}
+	
+	\veheading{Solemn Tone.}
+	
+	\gregorioscore{anthems/alma_solemn.gabc}
+	
+	\veheading{Simple Tone.}
+	
+	\gregorioscore{anthems/alma_simple.gabc}
+	
+	\skiplines{1}
+	
+	\instruct{In Advent:}
+	
+	\gregorioscore{anthems/advent_versicle.gabc}
+	
+	\instruct{But in Christmastide instead:}
+	
+	\gregorioscore{anthems/christmas_versicle.gabc}
+	
+	\clearpage
+	\vechapter{Salve Regina}
+	\veheading{Solemn Tone.}
+	\gregorioscore{anthems/salve_solemn.gabc}
+	
+	\veheading{Simple Tone.}
+	
+	\gregorioscore{anthems/salve_simple.gabc}
+	
+	\skiplines{1}
+	
+	\gregorioscore{anthems/ot_versicle.gabc}
+	
+	\clearpage
+	\vechapter{Ave Regina Caelorum}
+	\veheading{Solemn Tone.}
+	
+	\gregorioscore{anthems/lent_solemn.gabc}
+	
+	\veheading{Simple Tone.}
+	
+	\gregorioscore{anthems/lent_simple.gabc}
+	
+	\skiplines{1}
+	
+	\gregorioscore{anthems/lent_versicle.gabc}
+	
+	\clearpage
+	\vechapter{Regina Caeli}
+	
+	\veheading{Solemn Tone.}
+	
+	\gregorioscore{anthems/easter_solemn.gabc}
+	
+	\veheading{Simple Tone.}
+	
+	\gregorioscore{anthems/easter_simple.gabc}
+	
+	\skiplines{1}
+	
+	\gregorioscore{anthems/easter_versicle.gabc}
+\end{document}
